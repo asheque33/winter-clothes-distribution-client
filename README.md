@@ -17,7 +17,7 @@ The Winter Clothes Management System is a web application designed to streamline
 
 ## Live URL
 
-The live version of the Winter Clothes Management System can be accessed [here](https://example.com).
+The live version of the Winter Clothes Management System can be accessed [here](https://65ffa2817fedff83bd5437d5--benevolent-moonbeam-50e845.netlify.app/).
 
 ## Features
 
