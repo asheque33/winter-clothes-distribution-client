@@ -35,7 +35,7 @@ const winterClothesApi = baseApi.injectEndpoints({
         console.log("inside create-cloth api", _id);
         return {
           url: `/winter-clothes/${_id}`,
-          method: "PATCH",
+          method: "PUT",
           body: data,
         };
       },

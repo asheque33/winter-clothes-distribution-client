@@ -9,7 +9,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 interface DataType {
-  key: string;
+  _id: string;
   title: string;
   category: string;
   size: string;
@@ -26,7 +26,7 @@ const WinterClothesTable = () => {
   const data: DataType[] | undefined = AllWinterClothes?.data?.map(
     (item: TWinterClothProps) => {
       return {
-        key: item._id,
+        _id: item._id,
         title: item.title,
         category: item.category,
         size: item.size,
@@ -88,7 +88,7 @@ const WinterClothesTable = () => {
             {/* <Button className="bg-green-400">Edit</Button> */}
             <EditedWClothesModal record={record} />
             <Button
-              onClick={() => handleDelete(record.key)}
+              onClick={() => handleDelete(record._id)}
               className="bg-red-400 "
             >
               Delete

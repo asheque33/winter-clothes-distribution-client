@@ -22,9 +22,14 @@ const EditWinterClothesModal = ({ record }: { record: TWinterClothProps }) => {
     setVisible(false);
   };
   const handleEdit = async (values: TWinterClothProps) => {
-    const { ...updatedData } = values;
-    await updatedCloth({ _id: record._id, data: updatedData }); // Dispatch the RTK Query mutation
-    handleCloseModal();
+    try {
+      const { ...updatedData } = values;
+      await updatedCloth({ _id: record._id, data: updatedData }).unwrap(); // Unwrap the result to handle potential errors
+      handleCloseModal();
+    } catch (error) {
+      console.error("Failed to update cloth:", error);
+      // Handle the error (e.g., show a notification, set an error state, etc.)
+    }
   };
 
   return (
@@ -46,7 +51,11 @@ const EditWinterClothesModal = ({ record }: { record: TWinterClothProps }) => {
         ]}
       >
         <Form form={form} onFinish={handleEdit} layout="vertical">
-          <Form.Item label="Image" name="image">
+          <Form.Item
+            label="Image"
+            name="image"
+            initialValue={record.image as string}
+          >
             <Input />
           </Form.Item>
           <Form.Item label="Category" name="category">
@@ -58,7 +67,11 @@ const EditWinterClothesModal = ({ record }: { record: TWinterClothProps }) => {
           <Form.Item label="Size" name="size">
             <Input />
           </Form.Item>
-          <Form.Item label="Description" name="description">
+          <Form.Item
+            label="Description"
+            name="description"
+            initialValue={record.description as string}
+          >
             <Input.TextArea />
           </Form.Item>
         </Form>
