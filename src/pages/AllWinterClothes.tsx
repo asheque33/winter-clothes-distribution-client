@@ -1,7 +1,6 @@
 import { Card, Col, Row, Button, Divider } from "antd";
 import { Link } from "react-router-dom";
 import { useGetWinterClothesQuery } from "@/redux/features/winterClothes/winterClothesApi";
-import CustomHeader from "@/components/layouts/CustomHeader";
 import { TWinterClothProps } from "@/types";
 
 const WinterClothes: React.FC = () => {
@@ -19,7 +18,6 @@ const WinterClothes: React.FC = () => {
         // height: "100vh",
       }}
     >
-      <CustomHeader />
       <h2 className="font-bold text-5xl text-blue-400 my-8 text-center">
         All Winter Clothes Collection
       </h2>

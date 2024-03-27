@@ -29,10 +29,10 @@ const Leaderboard = () => {
   ];
   return (
     <div>
-      <h2 className="font-bold text-lg md:text-3xl lg:text-5xl my-8 text-center">
+      <h2 className="font-bold text-lg md:text-3xl lg:text-5xl text-fuchsia-400 my-8 text-center">
         Donors Leaderboard
       </h2>
-      <div className="my-4 mx-8 border-4 border-blue-400 rounded-xl">
+      <div className="my-4 mx-8 border-4 border-fuchsia-400 rounded-xl">
         <Table
           className="bg-white ps-64 w-full"
           loading={isFetching}
