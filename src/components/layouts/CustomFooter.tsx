@@ -43,7 +43,7 @@ const CustomFooter = () => {
           <h3 className="text-lg font-semibold mb-4 ">Resources</h3>
           <ul className="mb-2 text-base font-normal text-purple-600">
             <li>
-              <NavLink to="#">About Us</NavLink>
+              <NavLink to="/about-us">About Us</NavLink>
             </li>
             <li>
               <NavLink to="#">FAQS</NavLink>

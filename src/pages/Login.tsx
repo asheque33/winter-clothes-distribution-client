@@ -1,5 +1,5 @@
 import { LockOutlined, UserAddOutlined } from "@ant-design/icons";
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, message } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { useLoginMutation } from "@/redux/features/auth/authApi";
 import { useAppDispatch } from "@/redux/hooks";
@@ -23,6 +23,7 @@ const Login: React.FC = () => {
     const user = verifyToken(result.token);
     console.log(user);
     dispatch(setUser({ user, token: result.token }));
+    message.success("User logged in successfully!");
     navigate("/");
   };
   return (
@@ -57,10 +58,7 @@ const Login: React.FC = () => {
           />
         </Form.Item>
         <Form.Item style={{ fontSize: "10px", gap: "10px" }}>
-          <Button
-            className="bg-destructive w-56 h-16 text-white"
-            htmlType="submit"
-          >
+          <Button className="bg-red-400 w-56 h-16 text-white" htmlType="submit">
             Login
           </Button>
           <span style={{ fontWeight: "normal", fontSize: "24px" }}>

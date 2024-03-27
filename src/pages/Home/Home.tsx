@@ -6,7 +6,7 @@ import WinterClothesCard from "@/components/WinterClothesCard";
 import WinterClothesGallery from "@/components/WinterClothesGallery";
 import CustomFooter from "@/components/layouts/CustomFooter";
 import CustomHeader from "@/components/layouts/CustomHeader";
-import DonorTestimonial from "@/components/layouts/DonorTestimonial";
+import DonorTestimonial from "@/components/DonorTestimonial";
 
 const Home = () => {
   return (

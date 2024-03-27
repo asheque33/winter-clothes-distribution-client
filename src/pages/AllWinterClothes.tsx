@@ -1,4 +1,4 @@
-import { Card, Col, Row, Button } from "antd";
+import { Card, Col, Row, Button, Divider } from "antd";
 import { Link } from "react-router-dom";
 import { useGetWinterClothesQuery } from "@/redux/features/winterClothes/winterClothesApi";
 import CustomHeader from "@/components/layouts/CustomHeader";
@@ -20,9 +20,10 @@ const WinterClothes: React.FC = () => {
       }}
     >
       <CustomHeader />
-      <h2 className="font-bold text-5xl my-8 text-center">
+      <h2 className="font-bold text-5xl text-blue-400 my-8 text-center">
         All Winter Clothes Collection
       </h2>
+      <Divider className="border-b-2 border-blue-400" />
       <div className="site-card-wrapper my-16">
         <Row gutter={[16, { xs: 16, md: 24, lg: 32 }]}>
           {clothes?.data?.map((item: TWinterClothProps) => (

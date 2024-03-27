@@ -3,6 +3,11 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 import CreateWinterClothes from "@/pages/Dashboard/CreateWinterClothes";
 import WinterClothesTable from "@/pages/Dashboard/WinterClothesTable";
 import WinterClothes from "@/pages/AllWinterClothes";
+import Leaderboard from "@/pages/Leaderboard/Leaderboard";
+import CommunityGratitudeWall from "@/pages/CommiunityGratitudeWall/CommunityGratitudeWall";
+import CreateTestimonial from "@/pages/Dashboard/CreateTestimonial";
+import AboutUs from "@/pages/About Us/AboutUs";
+import CreateVolunteer from "@/pages/Volunteer/CreateVolunteer";
 
 export type TRoute = {
   path: string;
@@ -20,6 +25,7 @@ export const authUserPaths = [
     path: "winter-clothes",
     element: <WinterClothes />,
   },
+
   {
     name: "Dashboard",
     children: [
@@ -38,6 +44,31 @@ export const authUserPaths = [
         path: "dashboard/create-winter-clothes",
         element: <CreateWinterClothes />,
       },
+      {
+        name: "Create Testimonial",
+        path: "dashboard/create-testimonial",
+        element: <CreateTestimonial />,
+      },
     ],
+  },
+  {
+    name: "Leaderboard",
+    path: "leaderboard",
+    element: <Leaderboard />,
+  },
+  {
+    name: "Community",
+    path: "community",
+    element: <CommunityGratitudeWall />,
+  },
+  {
+    name: "Volunteer Hub",
+    path: "volunteer",
+    element: <CreateVolunteer />,
+  },
+  {
+    name: "About Us",
+    path: "about-us",
+    element: <AboutUs />,
   },
 ];

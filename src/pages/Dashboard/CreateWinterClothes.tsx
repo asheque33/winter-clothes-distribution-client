@@ -1,6 +1,6 @@
 import RadioInForm from "@/components/form/RadioInForm";
 import { useCreateWinterClothMutation } from "@/redux/features/winterClothes/winterClothesApi";
-import { Button, Form, Input } from "antd";
+import { Button, Divider, Form, Input, message } from "antd";
 
 const CreateWinterClothes = () => {
   const [form] = Form.useForm();
@@ -11,13 +11,14 @@ const CreateWinterClothes = () => {
       return <p>Loading..................</p>;
     }
     form.resetFields();
-    console.log("create after await submit", res);
+    message.success(res.message);
   };
   return (
-    <div className="max-w-7xl mx-8">
-      <h2 className="font-bold text-5xl my-8 text-center">
+    <div className="max-w-7xl ">
+      <h2 className="font-bold text-5xl my-8 text-center text-blue-500">
         Create Winter Clothes Post
       </h2>
+      <Divider className="border-b-2 border-blue-400"></Divider>
       <Form
         form={form}
         className="w-2/3 mx-auto"

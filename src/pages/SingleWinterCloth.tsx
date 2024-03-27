@@ -4,6 +4,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { useState } from "react";
+import { useAppSelector } from "@/redux/hooks";
+import { selectedUser } from "@/redux/features/auth/authSlice";
 const cardStyle: React.CSSProperties = {
   maxWidth: 1280,
   maxHeight: "100%",
@@ -19,6 +21,7 @@ const SingleWinterCloth = () => {
   const { id } = useParams();
   const { data: cloth, isLoading } = useGetSingleWinterClothQuery(id);
   const item = cloth?.data;
+  const isAuthenticated = useAppSelector(selectedUser);
   const navigate = useNavigate();
   const [confirmModalVisible, setConfirmModalVisible] = useState(false);
 
@@ -27,11 +30,14 @@ const SingleWinterCloth = () => {
   };
 
   const handleConfirmDonate = () => {
-    navigate("/dashboard");
+    if (isAuthenticated) {
+      navigate("/dashboard");
+    } else {
+      navigate("/login");
+    }
   };
 
   const handleCancelDonate = () => {
-    // Logic to cancel donation and close confirmation modal
     setConfirmModalVisible(false);
   };
 
@@ -40,8 +46,8 @@ const SingleWinterCloth = () => {
   }
   console.log("single cloth", cloth);
   return (
-    <div className="mx-auto w-full max-w-[1280px]">
-      <h2 className="font-bold text-lg md:text-3xl lg:text-5xl my-8 text-center">
+    <div className="mx-auto w-full h-screen max-w-[1280px]">
+      <h2 className="font-bold text-slate-500 text-lg md:text-3xl lg:text-5xl my-8 text-center">
         Winter Cloth Details
       </h2>
       <Card
@@ -49,7 +55,6 @@ const SingleWinterCloth = () => {
         style={cardStyle}
         styles={{ body: { padding: 0, overflow: "hidden" } }}
       >
-        {/* Flex justify="space-around" */}
         <div className=" lg:flex justify-around items-center gap-6">
           <img
             className="w-full md:w-1/2 flex-1 mx-auto"
@@ -109,7 +114,6 @@ const SingleWinterCloth = () => {
             </Modal>
           </div>
         </div>
-        {/* </Flex> */}
       </Card>
     </div>
   );

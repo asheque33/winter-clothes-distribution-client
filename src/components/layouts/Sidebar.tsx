@@ -2,9 +2,12 @@ import { authUserPaths } from "@/routes/dashboard.route";
 import { sidebarItemsGenerator } from "@/utils/sidebarItemsGenerator";
 import { Layout, Menu } from "antd";
 import { Link } from "react-router-dom";
+import { useAppSelector } from "@/redux/hooks";
+import { selectedUser } from "@/redux/features/auth/authSlice";
 
 const { Sider } = Layout;
 const Sidebar = () => {
+  const isAuthenticated = useAppSelector(selectedUser);
   return (
     <Sider
       style={{
@@ -40,7 +43,7 @@ const Sidebar = () => {
         theme="dark"
         defaultSelectedKeys={["4"]}
         mode="inline"
-        items={sidebarItemsGenerator(authUserPaths)}
+        items={sidebarItemsGenerator(authUserPaths, isAuthenticated!)}
       ></Menu>
     </Sider>
   );

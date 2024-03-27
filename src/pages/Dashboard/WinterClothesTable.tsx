@@ -27,9 +27,11 @@ const WinterClothesTable = () => {
     (item: TWinterClothProps) => {
       return {
         _id: item._id,
+        image: item.image,
         title: item.title,
         category: item.category,
         size: item.size,
+        description: item.description,
       };
     }
   );
@@ -107,8 +109,13 @@ const WinterClothesTable = () => {
           <Button className="bg-orange-400 ">Add New</Button>
         </Link>
       </div>
-      <div className="my-4 mx-4 border-4 border-blue-400 rounded-lg">
-        <Table loading={isFetching} columns={columns} dataSource={data} />
+      <div className="my-4 mx-4 border-4 border-blue-400 rounded-xl">
+        <Table
+          className="bg-slate-300"
+          loading={isFetching}
+          columns={columns}
+          dataSource={data}
+        />
       </div>
       <Modal
         title="Confirm Delete"

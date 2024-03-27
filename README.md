@@ -1,4 +1,4 @@
-# Winter Clothes Distribution Management
+# Winter Clothes Distribution Management [Client]
 
 This project is mainly focus on poor & suffering people so that they can warm themselves getting these little gifts.
 
@@ -66,13 +66,6 @@ The live version of the Winter Clothes Management System can be accessed [here](
   - Ant Design
   - Framer Motion
 
-- **Server:**
-  - Node.js
-  - Express.js
-  - MongoDB
-  - JWT Decode
-  - Bcrypt for hashing password
-
 ## Installation
 
 #### _To run the Winter Clothes Management System locally, follow these steps:_
@@ -101,41 +94,6 @@ git clone https://github.com/Porgramming-Hero-web-course/l2-b2-assignment-6-fron
 
 ```bash
   pnpm dev
-```
-
-### Backend Setup
-
-1. _Clone the repository:_
-
-```bash
-  git clone https://github.com/Porgramming-Hero-web-course/l2-b2-assignment-6-backend-asheque33.git
-```
-
-2. _Navigate to the backend directory:_
-
-```bash
-  l2-b2-assignment-6-backend-asheque33
-```
-
-3. _install dependencies:_
-
-```bash
-  npm install
-```
-
-4. _Setup environment variables by creating a '.env' file in the root directory and adding the following:_
-
-```bash
-PORT=4000
-MONGODB_URI="mongodb+srv://dwcmp_admin:dwcmp_admin123@cluster0.2fttge7.mongodb.net/wc-project?retryWrites=true&w=majority&appName=Cluster0"
-JWT_SECRET="wc-project-secret-key"
-EXPIRES_IN='7d'
-```
-
-5. _start the server:_
-
-```bash
-  npm run dev
 ```
 
 # Usage

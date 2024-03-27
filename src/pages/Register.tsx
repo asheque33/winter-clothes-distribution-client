@@ -1,5 +1,5 @@
 import { LockOutlined, UserAddOutlined, UserOutlined } from "@ant-design/icons";
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, message } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { useRegisterMutation } from "../redux/features/auth/authApi";
 
@@ -9,6 +9,7 @@ const Register = () => {
   const onFinish = (data: FormData) => {
     console.log("Received values of form: ", data);
     register(data);
+    message.success("User registered successfully! Please login now!");
     navigate("/login");
   };
   return (
@@ -53,10 +54,7 @@ const Register = () => {
           />
         </Form.Item>
         <Form.Item>
-          <Button
-            className="bg-destructive text-white w-56 h-16"
-            htmlType="submit"
-          >
+          <Button className="bg-red-400 text-white w-56 h-16" htmlType="submit">
             Register
           </Button>
           <span style={{ fontWeight: "normal", fontSize: "24px" }}>
