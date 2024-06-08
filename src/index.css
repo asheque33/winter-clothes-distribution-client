@@ -8,12 +8,12 @@
 @tailwind components;
 @tailwind utilities;
 
-body.light-theme {
+.light {
   --primary-color: #000;
   --background-color: #fff;
 }
 
-body.dark-theme {
+.dark {
   --primary-color: #fff;
   --background-color: #000;
 }

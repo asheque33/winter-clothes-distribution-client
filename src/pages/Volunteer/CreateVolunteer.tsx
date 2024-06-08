@@ -1,5 +1,5 @@
 import { useAddVolunteerMutation } from "@/redux/features/volunteer/volunteerApi";
-import { Button, Divider, Form, Input, message } from "antd";
+import { Button, Form, Input, message } from "antd";
 
 const CreateVolunteer = () => {
   const [form] = Form.useForm();
@@ -14,10 +14,10 @@ const CreateVolunteer = () => {
   };
   return (
     <div className="max-w-7xl ">
-      <h2 className="font-bold text-5xl my-8 text-purple-500 text-center">
+      <h2 className="font-bold text-5xl my-8 text-neutral-900 border-b-[1.5px] border-neutral-400 text-center">
         Volunteer Sign Up Form
       </h2>
-      <Divider className="border-b-2 border-purple-400"></Divider>
+
       <Form
         form={form}
         className="w-2/3 mx-auto"

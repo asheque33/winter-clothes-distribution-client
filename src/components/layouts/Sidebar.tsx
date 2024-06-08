@@ -36,7 +36,7 @@ const Sidebar = () => {
           className="font-semibold text-gray-400 hover:text-white text-lg md:text-2xl"
           to="/"
         >
-          wc-project
+          Care
         </Link>
       </div>
       <Menu

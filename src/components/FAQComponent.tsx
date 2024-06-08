@@ -5,7 +5,7 @@ const { Text } = Typography;
 
 const text1 = (
   <p className="px-8">
-    WC-Project is a top-rated (4-star) charity on Charity Navigator. We are also
+    Care is a top-rated (4.5-star) charity on Charity Navigator. We are also
     accredited by the BSTI Wise Giving Alliance. We've been recommended by
     experts in thousands of articles, including these: * Completion of 2
     thousand rickshaws on behalf of Self Reliance Project-2023 * Relief
@@ -15,18 +15,18 @@ const text1 = (
 );
 const text2 = (
   <p className="px-8">
-    All donations to WC Project funds will support immediate relief and
-    long-term recovery efforts in the region(s) affected by the specifically
-    described disaster or crisis. Typically, money is first sent to help meet
-    the most urgent and immediate needs, including the provision of shelter,
-    medical care, food, and clean water. Once initial relief work is complete,
-    money from a fund will be allocated by WC-Project for longer-term recovery
+    All donations to Care funds will support immediate relief and long-term
+    recovery efforts in the region(s) affected by the specifically described
+    disaster or crisis. Typically, money is first sent to help meet the most
+    urgent and immediate needs, including the provision of shelter, medical
+    care, food, and clean water. Once initial relief work is complete, money
+    from a fund will be allocated by WC-Project for longer-term recovery
     efforts—largely led by local representative.
   </p>
 );
 const text3 = (
   <p className="px-8">
-    WC-Project is made up of large and small nonprofits from 64 districts. When
+    Care is made up of large and small nonprofits from 64 districts. When
     disasters and crises strike, we are committed to connecting donors to vetted
     organizations responding to needs in the impacted communities from the
     initial emergency relief phase through the mid- and longer-term recovery. We
@@ -45,7 +45,9 @@ const items: CollapseProps["items"] = [
   {
     key: "1",
     label: (
-      <Text strong>How do I know I can trust my donation to WC-Project?</Text>
+      <Text strong>
+        How do I know I can trust my donation to Care organization?
+      </Text>
     ),
     children: text1,
   },
@@ -56,11 +58,7 @@ const items: CollapseProps["items"] = [
   },
   {
     key: "3",
-    label: (
-      <Text strong>
-        What makes GlobalGiving different from other nonprofits?
-      </Text>
-    ),
+    label: <Text strong>What makes Care different from other nonprofits?</Text>,
     children: text3,
   },
 ];

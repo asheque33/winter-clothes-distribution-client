@@ -14,7 +14,8 @@ function App() {
   };
 
   useEffect(() => {
-    document.body.setAttribute("data-theme", theme);
+    // document.body.setAttribute("data-theme", theme);
+    document.body.className = theme;
   }, [theme]);
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
