@@ -59,7 +59,8 @@ const CustomFooter = () => {
         <Col span={24} className="text-center">
           {" "}
           <Text strong type="warning">
-            WC-Project ©{new Date().getFullYear()} Created by WC Project.
+            Winter Clothes Distribution Project © {new Date().getFullYear()}{" "}
+            Created by Care.
           </Text>
         </Col>
       </Row>
