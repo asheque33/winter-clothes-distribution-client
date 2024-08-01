@@ -1,10 +1,10 @@
-import React from "react";
 import { Layout, Card } from "antd";
-import { Pie } from "@ant-design/charts";
+import { Chart } from "react-google-charts";
 import { useGetWinterClothesQuery } from "@/redux/features/winterClothes/winterClothesApi";
 
 const { Content } = Layout;
 
+// Function to count items in categories
 const countItemsInCategories = (items: any[]) => {
   const counts: { [key: string]: number } = {};
   items.forEach((item) => {
@@ -20,27 +20,33 @@ const countItemsInCategories = (items: any[]) => {
 const Dashboard: React.FC = () => {
   const { data, isLoading } = useGetWinterClothesQuery(undefined);
   console.log("inside dashboard", data);
+
   if (isLoading) {
     return <p>Loading...........</p>;
   }
 
+  // Get category counts
   const categoryCounts = countItemsInCategories(data?.data || []);
-  const data1 = Object.entries(categoryCounts).map(([category, count]) => ({
-    type: category,
-    value: count,
-  }));
 
-  const config = {
-    appendPadding: 10,
-    data: data1,
-    angleField: "value",
-    colorField: "type",
-    radius: 0.8,
-    label: {
-      type: "outer",
-      content: "{name} {percentage}",
+  // Format data for Google Charts
+  const chartData = [
+    ["Category", "Count"], // Column headers for Google Charts
+    ...Object.entries(categoryCounts).map(([category, count]) => [
+      category,
+      count,
+    ]),
+  ];
+
+  // Configuration options for Google Pie Chart
+  const options = {
+    title: "Supplies Calculations",
+    pieSliceText: "label",
+    slices: {
+      0: { offset: 0.1 },
     },
-    interactions: [{ type: "element-active" }],
+    legend: { position: "bottom" },
+    pieStartAngle: 135,
+    is3D: true,
   };
 
   return (
@@ -58,7 +64,7 @@ const Dashboard: React.FC = () => {
       >
         <div className="mx-auto">
           <Card
-            title="Supplies Calculations"
+            title="Supply Statistics"
             style={{
               width: 1200,
               height: 800,
@@ -67,7 +73,13 @@ const Dashboard: React.FC = () => {
               fontWeight: "bolder",
             }}
           >
-            <Pie {...config} />
+            <Chart
+              chartType="PieChart"
+              data={chartData}
+              options={options}
+              width={"100%"}
+              height={"400px"}
+            />
           </Card>
         </div>
       </Content>
