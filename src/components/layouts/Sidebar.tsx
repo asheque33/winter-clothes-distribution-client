@@ -1,49 +1,39 @@
+import { selectedUser } from "@/redux/features/auth/authSlice";
+import { useAppSelector } from "@/redux/hooks";
 import { authUserPaths } from "@/routes/dashboard.route";
 import { sidebarItemsGenerator } from "@/utils/sidebarItemsGenerator";
 import { Layout, Menu } from "antd";
-import { Link } from "react-router-dom";
-import { useAppSelector } from "@/redux/hooks";
-import { selectedUser } from "@/redux/features/auth/authSlice";
 
 const { Sider } = Layout;
 const Sidebar = () => {
-  const isAuthenticated = useAppSelector(selectedUser);
+  const user = useAppSelector(selectedUser);
+  const userRole = user!.role || "user";
   return (
     <Sider
       style={{
-        height: "100vh",
+        minHeight: `calc(100vh - 64px)`,
+        height: "100%",
         position: "sticky",
         top: "0",
         left: "0",
+        backgroundColor: "#f5efe6",
       }}
-      breakpoint="md"
-      collapsedWidth="0"
+      theme="light"
+      breakpoint="xs"
+      // collapsed={true}
+      // collapsedWidth="50px"
       onCollapse={(collapsed, type) => {
         console.log(collapsed, type);
       }}
     >
-      <div
-        style={{
-          color: "white",
-          height: "4rem",
-          // marginLeft: "25%",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Link
-          className="font-semibold text-gray-400 hover:text-white text-lg md:text-2xl"
-          to="/"
-        >
-          Care
-        </Link>
-      </div>
       <Menu
-        theme="dark"
-        defaultSelectedKeys={["4"]}
+        theme="light"
         mode="inline"
-        items={sidebarItemsGenerator(authUserPaths, isAuthenticated!)}
+        style={{
+          backgroundColor: "#f5efe6",
+          color: "#3c3d37",
+        }}
+        items={sidebarItemsGenerator(authUserPaths, userRole)}
       ></Menu>
     </Sider>
   );
