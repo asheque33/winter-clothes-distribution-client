@@ -1,13 +1,15 @@
 import aboutUsImg from "@/assets/banner/about-us1.png";
+import aboutUsImg2 from "@/assets/banner/about-us2.png";
 import VolunteersList from "./VolunteersList";
-import { Card, Image, Space, Typography } from "antd";
-import Container from "@/components/layouts/Container";
-const { Title, Text } = Typography;
+import { Image, Space, Typography } from "antd";
+import Container from "@/components/layouts/Shared/Container";
+const { Title, Text, Paragraph } = Typography;
 
 const AboutUs = () => {
   return (
     <section>
       <div
+        id="about-us-1st"
         style={{
           position: "relative",
           backgroundImage: `url(${aboutUsImg})`,
@@ -33,8 +35,8 @@ const AboutUs = () => {
           <Title className=" text-center">
             <span className="text-white">Who We Are</span>
           </Title>
-          <Text className=" text-center">
-            <span className="text-white text-lg">
+          <Text className="text-center">
+            <span className="text-white text-lg sm:mx-auto mx-0">
               {" "}
               We are a non-profit organization dedicated to providing warmth and
               support to displaced refugees and their families.
@@ -48,21 +50,21 @@ const AboutUs = () => {
       <Container>
         <div
           id="about-2nd-part"
-          className="flex flex-col sm:flex-row items-stretch justify-around gap-4 md:gap-6 py-6"
+          className=" flex flex-col-reverse md:flex-row items-stretch justify-around gap-4 lg:gap-6 my-6"
         >
           {/* Image Container */}
-          <div className="w-full sm:w-3/5 border-4">
-            <div className="w-full h-full">
+          <div className="w-full sm:w-4/5 md:w-3/5 mx-auto md:mx-0 h-full  md:h-[450px] ">
+            <div className="w-full h-full  overflow-hidden">
               <Image
-                alt="image1"
-                src="https://i.ibb.co/vdy6k6c/410649619-662314172766516-7174971664576679563-n.jpg"
-                className="w-full h-full rounded-md object-cover"
+                alt="image2"
+                src={aboutUsImg2}
+                className="w-full h-full  rounded-md object-cover"
               />
             </div>
           </div>
 
           {/* Text Container */}
-          <div className="w-full sm:w-2/5 border-4 flex flex-col justify-center">
+          <div className="w-full sm:w-4/5 md:w-2/5 mx-auto md:mx-0 h-full md:h-full lg:h-[500px] md:my-auto lg:my-0  flex flex-col justify-center">
             <Typography className="w-full h-full p-6 flex flex-col justify-center">
               <Space direction="vertical">
                 <Title>
@@ -89,10 +91,16 @@ const AboutUs = () => {
         </div>
 
         <div>
-          <Title className="font-bold text-5xl  mt-8 text-center">
-            <span className="text-[#ff4c4e]">Our</span> Volunteers
-          </Title>
-          <div className="border-b-2 shadow-slate-400 border-orange-400 w-[350px] mb-6 mx-auto"></div>
+          <Typography className="text-center">
+            <Title style={{ marginBottom: "0" }} level={2}>
+              <span className="text-[#FF4C4E]">Our</span> Volunteers
+            </Title>
+            <Paragraph style={{ marginTop: "0" }}>
+              <Text italic className="text-lg text-slate-400">
+                Warming Hearts This Winter – Introduction To Our real heroes.
+              </Text>
+            </Paragraph>
+          </Typography>
 
           <div>
             <VolunteersList />

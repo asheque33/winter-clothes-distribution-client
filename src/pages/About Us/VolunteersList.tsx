@@ -19,7 +19,7 @@ const VolunteersList = () => {
       dataSource={volunteers}
       renderItem={(volunteer: TVolunteerProps) => (
         <List.Item>
-          <Card className="rounded-xl bg-orange-400 ms-2">
+          <Card className="rounded-xl bg-[#ff4c4e] ms-2">
             <h5 className="text-xl font-semibold">Email: {volunteer.email}</h5>
             <h6 className="text-lg font-medium">
               Phone: {volunteer.phoneNumber}
