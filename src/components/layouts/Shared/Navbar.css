@@ -1,0 +1,14 @@
+/* .ant-menu-item-selected::after,
+.ant-menu-item:hover::after {
+  border-bottom: none !important;
+} */
+
+.ant-menu-item::after {
+  border-bottom: none !important;
+}
+
+.ant-menu-item-selected::after,
+.ant-menu-item:hover::after {
+  border-bottom: none !important;
+  transition: none !important;
+}
