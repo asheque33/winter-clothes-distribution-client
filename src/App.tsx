@@ -1,26 +1,43 @@
-import { createContext, useEffect, useState } from "react";
-import MainLayOut from "./components/layouts/MainLayOut";
-
-export const ThemeContext = createContext({
-  theme: "light",
-  toggleTheme: () => {},
-});
+import { ConfigProvider } from "antd";
+import { useContext } from "react";
+import { ThemeContext } from "./components/ThemeContext/ThemeProvider";
+import MainLayout from "./components/layouts/MainLayout/MainLayOut";
 
 function App() {
-  const [theme, setTheme] = useState("light");
+  const { theme } = useContext(ThemeContext);
 
-  const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
-  };
-
-  useEffect(() => {
-    // document.body.setAttribute("data-theme", theme);
-    document.body.className = theme;
-  }, [theme]);
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <MainLayOut />
-    </ThemeContext.Provider>
+    <ConfigProvider
+      theme={
+        theme === "dark"
+          ? {
+              token: {
+                colorPrimary: "#ff4c4e",
+                colorTextSecondary: "#3c3d37",
+                // colorBgMask: "#f5efe6",
+                colorBgLayout: "#3c3d37", //bodyBg
+                colorBgBase: "#313131", //cardBg,ButtonBg
+                colorBgSolid: "#001629",
+                //"#313131",
+                //navbar,footer
+                colorText: "#f0f0f0",
+              }, //dark theme
+            }
+          : {
+              token: {
+                colorPrimary: "#ff4c4e",
+                colorTextSecondary: "#fff",
+                // colorBgMask: "#3c3d37",
+                colorBgLayout: "#f5f5f5",
+                colorBgBase: "#fff", //cardBg,ButtonBg
+                colorBgSolid: "#f5efe6",
+                colorText: "#3c3d37",
+              }, //default/light theme
+            }
+      }
+    >
+      <MainLayout />
+    </ConfigProvider>
   );
 }
 
