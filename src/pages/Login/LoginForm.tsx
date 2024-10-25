@@ -11,7 +11,7 @@ import { selectedUser, setUser } from "@/redux/features/auth/authSlice";
 import { verifyToken } from "@/utils/verifyToken";
 import { ILoggedInUser } from "@/types";
 import { useEffect } from "react";
-import { capitalize } from "@/utils/CapitalizedWord";
+import { capitalize } from "@/utils/capitalizedWord";
 interface IDemoCredentials {
   demoCredentials: {
     email: string;

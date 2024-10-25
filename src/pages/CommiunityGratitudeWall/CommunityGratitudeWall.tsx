@@ -1,14 +1,17 @@
+import Container from "@/components/layouts/Shared/Container";
+import { ThemeContext } from "@/components/ThemeContext/ThemeProvider";
 import {
   useGetCommunityCommentQuery,
   usePostCommunityCommentMutation,
 } from "@/redux/features/community/communityApi";
 import { TCommunityComment } from "@/types";
-import { Button, Divider, Input, Layout } from "antd";
-import Paragraph from "antd/es/typography/Paragraph";
-import { useState } from "react";
+import { Button, Input, Layout, Typography } from "antd";
+import { useContext, useState } from "react";
 const { Content } = Layout;
 const { TextArea } = Input;
+const { Title, Text, Paragraph } = Typography;
 const CommunityGratitudeWall = () => {
+  const { theme } = useContext(ThemeContext);
   const { data, isFetching } = useGetCommunityCommentQuery(undefined);
   const comments = data?.data;
   console.log(comments);
@@ -20,11 +23,18 @@ const CommunityGratitudeWall = () => {
     setCommentText("");
   };
   return (
-    <div>
-      <h2 className="font-bold text-5xl text-purple-500 mt-8 mb-4 text-center ">
-        Community Gratitude Wall
-      </h2>
-      <Divider className="border-b-2 border-purple-400" />
+    <Container>
+      <Typography className="text-center">
+        <Title style={{ marginBottom: "0" }} level={2}>
+          <span className="text-[#FF4C4E]">Community</span> Wall
+        </Title>
+        <Paragraph style={{ marginTop: "0" }}>
+          <Text italic className="text-lg text-slate-400">
+            Warming Hearts This Winter – Interested To Contribute With Us?
+          </Text>
+        </Paragraph>
+      </Typography>
+      {/* <Divider className="border-b-2 border-[#ff4c4e]" /> */}
       <Content style={{ padding: "24px" }}>
         <h1 className="font-bold">Comments</h1>
         <TextArea
@@ -37,7 +47,13 @@ const CommunityGratitudeWall = () => {
         />
         <br />
         <Button
-          className="bg-purple-400 ms-[45%]"
+          style={{
+            backgroundColor: theme === "light" ? "#333" : "#ff4c4e",
+            color: theme === "light" ? "#fff" : "#fff",
+          }}
+          color="default"
+          variant="solid"
+          className=" ms-[45%]"
           onClick={handleCommentSubmit}
           loading={isFetching}
         >
@@ -46,7 +62,11 @@ const CommunityGratitudeWall = () => {
         {comments?.map((item: TCommunityComment, index: string) => (
           <Paragraph
             key={index}
-            style={{ maxWidth: 440, marginTop: 24, backgroundColor: "#F0F2F5" }}
+            style={{
+              maxWidth: 440,
+              marginTop: 24,
+              // backgroundColor: theme === "light" ? "#F0F2F5" : "#ff4c4e",
+            }}
           >
             <pre style={{ border: "none", borderRadius: "30px" }}>
               <h6 className="font-semibold">
@@ -57,7 +77,7 @@ const CommunityGratitudeWall = () => {
           </Paragraph>
         ))}
       </Content>
-    </div>
+    </Container>
   );
 };
 

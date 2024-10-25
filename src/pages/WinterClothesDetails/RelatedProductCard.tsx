@@ -13,7 +13,9 @@ const RelatedProductCard = ({
         <img className="h-24 w-20" src={item.image!} alt="" />
         <Typography className="flex flex-col">
           <Title level={5}>{item.title.slice(0, 20)}</Title>
-          <Text type="secondary">{item.category}</Text>
+          <Text type="danger" strong>
+            {item.category}
+          </Text>
           <Button
             className="my-1 w-fit"
             variant="solid"

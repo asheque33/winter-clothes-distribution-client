@@ -1,7 +1,12 @@
+import Container from "@/components/layouts/Shared/Container";
+import { ThemeContext } from "@/components/ThemeContext/ThemeProvider";
 import { useAddVolunteerMutation } from "@/redux/features/volunteer/volunteerApi";
-import { Button, Form, Input, message } from "antd";
+import { Button, Form, Input, message, Typography } from "antd";
+import { useContext } from "react";
+const { Title, Text, Paragraph } = Typography;
 
 const CreateVolunteer = () => {
+  const { theme } = useContext(ThemeContext);
   const [form] = Form.useForm();
   const [addVolunteer, { isLoading }] = useAddVolunteerMutation();
   const handleSubmit = async (data: FormData) => {
@@ -13,11 +18,18 @@ const CreateVolunteer = () => {
     message.success(res.message);
   };
   return (
-    <div className="max-w-7xl ">
-      <h2 className="font-bold text-5xl my-8 text-neutral-900 border-b-[1.5px] border-neutral-400 text-center">
-        Volunteer Sign Up Form
-      </h2>
-
+    <Container className="my-6">
+      <Typography className="text-center">
+        <Title style={{ marginBottom: "0" }} level={2}>
+          <span className="text-[#FF4C4E]">SignUp</span> As A{" "}
+          <span className="text-[#ff4c4e]">Volunteer</span>
+        </Title>
+        <Paragraph style={{ marginTop: "0" }}>
+          <Text italic className="text-lg text-slate-400">
+            Warming Hearts This Winter – Interested To Contribute With Us?
+          </Text>
+        </Paragraph>
+      </Typography>
       <Form
         form={form}
         className="w-2/3 mx-auto"
@@ -63,12 +75,20 @@ const CreateVolunteer = () => {
           <Input />
         </Form.Item>
         <Form.Item>
-          <Button className="bg-purple-400" htmlType="submit">
+          <Button
+            style={{
+              backgroundColor: theme === "light" ? "#333" : "#ff4c4e",
+              color: theme === "light" ? "#fff" : "#fff",
+            }}
+            color="default"
+            variant="solid"
+            htmlType="submit"
+          >
             Sign Up
           </Button>
         </Form.Item>
       </Form>
-    </div>
+    </Container>
   );
 };
 

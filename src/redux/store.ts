@@ -13,7 +13,6 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { winterClothesSlice } from "./features/winterClothes/winterClothesSlice";
-import { themeSlice } from "./features/theme/themeSlice";
 
 const authPersistConfig = {
   key: "auth",
@@ -24,10 +23,10 @@ const winterPersistConfig = {
   key: "winter",
   storage,
 };
-const themePersistConfig = {
-  key: "theme",
-  storage,
-};
+// const themePersistConfig = {
+//   key: "theme",
+//   storage,
+// };
 
 const persistedAuthReducer = persistReducer(
   authPersistConfig,
@@ -37,17 +36,17 @@ const persistedWinterReducer = persistReducer(
   winterPersistConfig,
   winterClothesSlice.reducer
 );
-const persistedThemeReducer = persistReducer(
-  themePersistConfig,
-  themeSlice.reducer
-);
+// const persistedThemeReducer = persistReducer(
+//   themePersistConfig,
+//   themeSlice.reducer
+// );
 
 export const store = configureStore({
   reducer: {
     [baseApi.reducerPath]: baseApi.reducer,
     auth: persistedAuthReducer,
     winter: persistedWinterReducer,
-    theme: persistedThemeReducer,
+    // theme: persistedThemeReducer,
   },
   // Adding the api middleware enables caching, invalidation, polling,
   // and other useful features of `rtk-query`.

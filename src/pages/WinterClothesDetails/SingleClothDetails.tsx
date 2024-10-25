@@ -1,23 +1,27 @@
-import { Divider, Typography } from "antd";
+import { Divider, theme, Typography } from "antd";
 import {
   useGetSingleWinterClothQuery,
   useGetWinterClothesQuery,
 } from "@/redux/features/winterClothes/winterClothesApi";
 
-import Container from "@/components/layouts/Container";
+import Container from "@/components/layouts/Shared/Container";
 import { TWinterClothProps } from "@/types";
 import RelatedProductCard from "./RelatedProductCard";
 import SingleClothCard from "./SingleClothCard";
 import { useParams } from "react-router-dom";
+import { useContext } from "react";
+import { ThemeContext } from "@/components/ThemeContext/ThemeProvider";
 const { Title } = Typography;
 // const cardStyle: React.CSSProperties = {
 //   maxWidth: 1280,
 //   maxHeight: "100%",
 //   paddingBottom: 50,
 // };
-
+const { useToken } = theme;
 const SingleWinterCloth = () => {
   const { id } = useParams();
+  const { token } = useToken();
+  const { theme } = useContext(ThemeContext);
   const { data, isLoading } = useGetWinterClothesQuery(undefined);
 
   const clothes = data?.data;
@@ -41,14 +45,19 @@ const SingleWinterCloth = () => {
       <div className="w-full lg:col-span-9">
         <SingleClothCard item={item} />
       </div>
-      <div className="bg-white  lg:col-span-3 w-full">
-        <Typography className="text-center">
+      <div
+        style={{
+          backgroundColor: theme === "light" ? "#f0f0f0" : token.colorBgSolid,
+        }}
+        className="  lg:col-span-3 w-full"
+      >
+        <Typography className="text-center relative top-2">
           <Title level={2}>
             <span>Related Products</span>
           </Title>
         </Typography>
-        <Divider />
-        <div className=" p-4">
+        <Divider className="mb-0" />
+        <div className="mt-0 p-4">
           {relatedProducts.map((product: TWinterClothProps) => (
             <RelatedProductCard key={product._id} relatedProduct={product} />
           ))}

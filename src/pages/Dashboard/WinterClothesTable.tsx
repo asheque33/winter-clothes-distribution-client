@@ -1,21 +1,34 @@
+import EditedWinterClothesModal from "@/components/ClothUpdatedModal.tsx/EditedWClothesModal";
+import Container from "@/components/layouts/Shared/Container";
+import { ThemeContext } from "@/components/ThemeContext/ThemeProvider";
 import {
   useDeleteWinterClothMutation,
   useGetWinterClothesQuery,
 } from "@/redux/features/winterClothes/winterClothesApi";
 import { TWinterClothProps } from "@/types";
-import EditedWClothesModal from "@/utils/EditedWClothesModal";
-import { Button, Modal, Space, Table, TableColumnsType } from "antd";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+
+import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
+import {
+  Button,
+  Modal,
+  Space,
+  Table,
+  TableColumnsType,
+  Typography,
+} from "antd";
+import { useContext, useState } from "react";
+const { Title } = Typography;
 
 interface DataType {
   _id: string;
+  image: string;
   title: string;
   category: string;
   size: string;
 }
 
 const WinterClothesTable = () => {
+  const { theme } = useContext(ThemeContext);
   const { data: AllWinterClothes, isFetching } =
     useGetWinterClothesQuery(undefined);
   const [deleteCloth] = useDeleteWinterClothMutation();
@@ -54,79 +67,114 @@ const WinterClothesTable = () => {
 
   const columns: TableColumnsType<DataType> = [
     {
+      title: "Image",
+      key: "image",
+      width: "15%",
+      render: (_, record) => (
+        <div>
+          <img src={record.image} alt={record.title} width="50%" height="40%" />
+        </div>
+      ),
+    },
+    {
       title: "Title",
       dataIndex: "title",
       key: "title",
-      width: "5%",
-      render: (text: string) => (
-        <div style={{ marginRight: "20px" }}>{text}</div>
-      ),
+      width: "15%",
+      // render: (text: string) => (
+      //   <div style={{ marginRight: "20px" }}>{text}</div>
+      // ),
     },
     {
       title: "Category",
       dataIndex: "category",
       key: "category",
-      width: "1.5%",
-      render: (text: string) => (
-        <div style={{ marginLeft: "10px" }}>{text}</div>
-      ),
+      width: "10%",
+      // render: (text: string) => (
+      //   <div style={{ marginLeft: "10px" }}>{text}</div>
+      // ),
     },
     {
       title: "Size",
       dataIndex: "size",
       key: "size",
-      width: "1.5%",
-      render: (text: string) => (
-        <div style={{ marginLeft: "10px" }}>{text}</div>
-      ),
+      width: "10%",
+      // render: (text: string) => (
+      //   <div style={{ marginLeft: "10px" }}>{text}</div>
+      // ),
     },
     {
       title: "Action",
       key: "action",
+      width: "10%",
       render: (_, record) => {
-        // console.log(item);
         return (
+          // Two actions button[edit, delete]
           <Space size="large">
-            {/* <Button className="bg-green-400">Edit</Button> */}
-            <EditedWClothesModal record={record} />
+            {/* Table Edited Item */}
+            <EditedWinterClothesModal record={record} />
+            {/* Table Deleted Item Button */}
             <Button
               onClick={() => handleDelete(record._id)}
-              className="bg-red-400 "
-            >
-              Delete
-            </Button>
+              color="danger"
+              variant="solid"
+              icon={<DeleteOutlined />}
+            />
           </Space>
         );
       },
-      width: "1.5%",
     },
   ];
 
   return (
-    <div className="mx-10 my-12 ">
-      <div className="mx-4">
-        <Link to="/dashboard/create-winter-clothes">
-          <Button className="bg-orange-400 ">Add New</Button>
-        </Link>
+    <Container className="my-8  ">
+      <div className=" flex flex-col-reverse sm:flex-row items-center justify-between">
+        <Button
+          href="/dashboard/create-winter-clothes"
+          size="large"
+          style={{
+            backgroundColor: theme === "light" ? "#333" : "#ff4c4e",
+            color: theme === "light" ? "#fff" : "#fff",
+          }}
+          color="default"
+          variant="solid"
+          className="w-full sm:w-auto"
+          icon={<PlusOutlined />}
+        >
+          Add New
+        </Button>
+        <Typography className="flex-grow text-center">
+          <Title level={3}>
+            Clothes <span className="text-[#ff4c4e]">Management</span>
+          </Title>
+        </Typography>
       </div>
-      <div className="my-4 mx-4 border-4 border-blue-400 rounded-xl">
+      <div className="my-4  ">
         <Table
-          className="bg-slate-300"
+          className=" w-full"
           loading={isFetching}
           columns={columns}
           dataSource={data}
+          size="large"
+          rowKey={(record) => record._id}
         />
       </div>
       <Modal
         title="Confirm Delete"
         open={confirmDeleteModalVisible}
         footer={[
-          <Button key="cancel" onClick={handleCancelDelete}>
+          <Button
+            key="cancel"
+            color="default"
+            variant="filled"
+            onClick={handleCancelDelete}
+          >
             Cancel
           </Button>,
           <Button
             key="submit"
-            className="bg-red-400"
+            color="danger"
+            variant="solid"
             onClick={handleConfirmDelete}
           >
             Confirm
@@ -135,7 +183,7 @@ const WinterClothesTable = () => {
       >
         <p>Are you sure you want to delete this winter clothes post?</p>
       </Modal>
-    </div>
+    </Container>
   );
 };
 

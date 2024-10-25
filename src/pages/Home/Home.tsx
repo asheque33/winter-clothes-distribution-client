@@ -1,26 +1,21 @@
-import Banner from "@/components/Banner";
-import ColdWeatherTips from "@/components/ColdWeatherTips";
-import FAQComponent from "@/components/FAQComponent";
-import SuccessStories from "@/components/SuccessStories";
-import WinterClothesCard from "@/components/WinterClothesCard";
-import WinterClothesGallery from "@/components/WinterClothesGallery";
-import CustomFooter from "@/components/layouts/CustomFooter";
-import CustomHeader from "@/components/layouts/CustomHeader";
-import DonorTestimonial from "@/components/DonorTestimonial";
-
+import Banner from "@/components/Home/Banner/Banner";
+import FAQComponent from "@/components/Home/FAQ/FAQComponent";
+import SuccessStories from "@/components/Home/SuccessStory/SuccessStories";
+import WinterClothesGallery from "@/components/Home/ClothGallery/WinterClothesGallery";
+import DonorTestimonial from "@/components/Home/Testimonial/DonorTestimonial";
+import Container from "@/components/layouts/Shared/Container";
+import WinterClothesPost from "@/components/Home/ClothCard/WinterClothesPost";
 const Home = () => {
   return (
-    <div className="max-w-[1450px] mx-auto">
-      <CustomHeader />
+    <Container>
       <Banner />
-      <WinterClothesCard />
+      <WinterClothesPost />
       <DonorTestimonial />
       <WinterClothesGallery />
       <SuccessStories />
-      <ColdWeatherTips />
+      {/* <ColdWeatherTips /> */}
       <FAQComponent />
-      <CustomFooter />
-    </div>
+    </Container>
   );
 };
 

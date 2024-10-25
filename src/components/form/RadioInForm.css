@@ -1,0 +1,49 @@
+/* Disable transition effect to prevent blinking */
+.ant-radio-button-wrapper {
+  transition: none !important; /* Disable any animation effects */
+}
+
+/* Checked state styling */
+.ant-radio-button-wrapper-checked {
+  background-color: black !important; /* Ensure background remains black */
+  color: white !important; /* Ensure text color remains white */
+  border-color: black !important; /* Keep border color consistent */
+  box-shadow: none !important;
+}
+
+/* Maintain styles when hovering over the checked button */
+.ant-radio-button-wrapper-checked:hover,
+.ant-radio-button-wrapper-checked:focus,
+.ant-radio-button-wrapper-checked:active {
+  background-color: black !important; /* Keep background black on hover */
+  color: white !important; /* Keep text color white */
+  border-color: black !important; /* Ensure border remains black */
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Eliminate blue outline or margin on the active button */
+.ant-radio-button-wrapper:focus,
+.ant-radio-button-wrapper:focus-visible,
+.ant-radio-button-wrapper:active,
+.ant-radio-button-wrapper-checked:focus,
+.ant-radio-button-wrapper-checked:active {
+  background-color: black !important; /* Keep background black */
+  color: white !important; /* Keep text color white */
+  border-color: black !important; /* Match border color with background */
+  box-shadow: none !important; /* Remove blue shadow effect */
+  outline: none !important; /* Remove the blue focus outline */
+}
+
+/* Remove left margin or blue gap of active radio button */
+.ant-radio-button-wrapper-checked::before {
+  content: none !important; /* Remove the left blue gap on the active button */
+  /* display: none !important; */
+}
+
+/* Unchecked radio button hover styling */
+.ant-radio-button-wrapper:hover:not(.ant-radio-button-wrapper-checked) {
+  background-color: #f0f0f0 !important; /* Light grey for hover effect */
+  color: black !important; /* Change text color */
+  border-color: #d9d9d9 !important; /* Adjust border color */
+}

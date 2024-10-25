@@ -1,4 +1,5 @@
 import { Radio, RadioChangeEvent } from "antd";
+import "./RadioInForm.css";
 
 interface RadioInFormProps {
   value?: string;
@@ -10,7 +11,14 @@ const RadioInForm = ({ value, onChange }: RadioInFormProps) => {
     onChange?.(e.target.value);
   };
   return (
-    <Radio.Group onChange={radioButtonChange} value={value}>
+    <Radio.Group
+      onChange={radioButtonChange}
+      buttonStyle="solid"
+      optionType="button"
+      size="large"
+      block
+      value={value}
+    >
       <Radio value="S">S</Radio>
       <Radio value="M">M</Radio>
       <Radio value="L">L</Radio>

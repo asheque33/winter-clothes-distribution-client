@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useAppSelector } from "@/redux/hooks";
 import { selectedUser } from "@/redux/features/auth/authSlice";
-import { Button, Modal, Typography } from "antd";
+import { Button, Modal, theme, Typography } from "antd";
 import { TWinterClothProps } from "@/types";
 import { motion } from "framer-motion";
+import { ThemeContext } from "@/components/ThemeContext/ThemeProvider";
 
 const { Title, Text } = Typography;
 const imgStyle: React.CSSProperties = {
@@ -12,8 +13,10 @@ const imgStyle: React.CSSProperties = {
   maxWidth: 800,
   maxHeight: 600,
 };
-
+const { useToken } = theme;
 const SingleClothCard = ({ item }: { item: TWinterClothProps }) => {
+  const { theme } = useContext(ThemeContext);
+  const { token } = useToken();
   const [confirmModalVisible, setConfirmModalVisible] = useState(false);
   const user = useAppSelector(selectedUser);
   const navigate = useNavigate();
@@ -36,7 +39,12 @@ const SingleClothCard = ({ item }: { item: TWinterClothProps }) => {
 
   return (
     <>
-      <div className="w-full bg-white  p-4 mx-auto">
+      <div
+        style={{
+          backgroundColor: theme === "light" ? "#fff" : token.colorBgSolid,
+        }}
+        className="w-full  p-4 mx-auto"
+      >
         <div id="img" className="w-full lg:w-[800px] h-[600px]  mx-auto">
           <img
             className="w-full h-full  object-contain "
@@ -74,7 +82,11 @@ const SingleClothCard = ({ item }: { item: TWinterClothProps }) => {
           >
             <Button
               onClick={handleDonateNow}
-              color="default"
+              type={theme === "light" ? "primary" : "primary"}
+              //   type="primary"
+              //   color={theme === "light" ? "default" : undefined}
+              //   color="default"
+              danger={theme !== "light"}
               variant="solid"
               size="large"
               block
@@ -84,7 +96,13 @@ const SingleClothCard = ({ item }: { item: TWinterClothProps }) => {
           </motion.div>
         </div>
       </div>
-      <div id="img-description" className="mt-8 bg-white  p-4">
+      <section
+        id="img-desc"
+        style={{
+          backgroundColor: theme === "light" ? "#fff" : token.colorBgSolid,
+        }}
+        className="mt-8   p-4"
+      >
         <Typography className=" space-y-4">
           <Text>
             <span className="text-lg  font-semibold md:text-lg ">
@@ -143,7 +161,7 @@ const SingleClothCard = ({ item }: { item: TWinterClothProps }) => {
             </span>
           </Text>
         </Typography>
-      </div>
+      </section>
       <Modal
         title="Confirm Donation"
         open={confirmModalVisible}

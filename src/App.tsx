@@ -20,7 +20,7 @@ function App() {
                 colorBgSolid: "#001629",
                 //"#313131",
                 //navbar,footer
-                colorText: "#f0f0f0",
+                colorText: "#fff",
               }, //dark theme
             }
           : {

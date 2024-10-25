@@ -1,4 +1,4 @@
-import Container from "@/components/layouts/Container";
+import Container from "@/components/layouts/Shared/Container";
 import { useGetDonorsQuery } from "@/redux/features/donations/donorsApi";
 import { TDonationProps } from "@/types";
 import { Table, Avatar, Typography, TableColumnsType } from "antd";
@@ -61,7 +61,7 @@ const LeaderBoard = () => {
       </Typography>
       <div className="my-4 overflow-x-auto border border-[#ff4c4e] rounded-xl">
         <Table<TDonationProps>
-          className="bg-white  w-full"
+          className="  w-full"
           loading={isFetching}
           columns={columns}
           dataSource={sortedDonors}

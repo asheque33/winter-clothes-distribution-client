@@ -1,12 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
-import App from "../App";
-import WinterClothes from "../pages/AllWinterClothes";
-import Login from "../pages/Login";
-import Register from "../pages/Register";
-import SingleWinterCloth from "@/pages/SingleWinterCloth";
-import { authUserPaths } from "./dashboard.route";
+import Login from "../pages/Login/Login";
+import Register from "../pages/Register/Register";
 import { routesGenerator } from "@/utils/routesGenerator";
 import Home from "@/pages/Home/Home";
+import { unAuthUserPaths } from "./navbar.route";
+import DashboardLayout from "@/components/layouts/DashboardLayout/DashboardLayout";
+import { authUserPaths } from "./dashboard.route";
+import SingleWinterCloth from "@/pages/WinterClothesDetails/SingleClothDetails";
+import App from "@/App";
 
 const router = createBrowserRouter([
   {
@@ -14,25 +15,26 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "/",
+        index: true,
         element: <Home />,
       },
+      {
+        path: "winter-clothes/:id",
+        element: <SingleWinterCloth />,
+      },
+      ...routesGenerator(unAuthUserPaths),
     ],
   },
+  // {
+  //   path: "/",
+  //   element: <MainLayout />,
+  //   children: routesGenerator(unAuthUserPaths),
+  // },
   {
-    path: "/",
-    element: <App />,
+    path: "/dashboard",
+    element: <DashboardLayout />,
     children: routesGenerator(authUserPaths),
   },
-  {
-    path: "/winter-clothes",
-    element: <WinterClothes />,
-  },
-  {
-    path: "/winter-clothes/:id",
-    element: <SingleWinterCloth />,
-  },
-
   {
     path: "/register",
     element: <Register />,
@@ -40,6 +42,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "*",
+    element: <div>Page Not Found</div>,
   },
 ]);
 export default router;

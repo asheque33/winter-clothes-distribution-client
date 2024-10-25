@@ -1,74 +1,60 @@
 import { ReactNode } from "react";
-import Dashboard from "../pages/Dashboard/Dashboard";
+import Dashboard from "../pages/Dashboard/Dashboard Home/Dashboard";
 import CreateWinterClothes from "@/pages/Dashboard/CreateWinterClothes";
 import WinterClothesTable from "@/pages/Dashboard/WinterClothesTable";
-import WinterClothes from "@/pages/AllWinterClothes";
-import Leaderboard from "@/pages/Leaderboard/Leaderboard";
-import CommunityGratitudeWall from "@/pages/CommiunityGratitudeWall/CommunityGratitudeWall";
 import CreateTestimonial from "@/pages/Dashboard/CreateTestimonial";
-import AboutUs from "@/pages/About Us/AboutUs";
-import CreateVolunteer from "@/pages/Volunteer/CreateVolunteer";
+import AdminProfile from "@/pages/Dashboard/MyProfile/AdminProfile";
+import UserProfile from "@/pages/Dashboard/MyProfile/UserProfile";
 
 export type TRoute = {
   path: string;
   element: ReactNode;
 };
+
 export type TAuthUserPath = {
   name: string;
   path?: string;
   element?: ReactNode;
+  adminOnly?: boolean;
   children?: TAuthUserPath[];
 };
 export const authUserPaths = [
-  {
-    name: "All Winter Clothes",
-    path: "winter-clothes",
-    element: <WinterClothes />,
-  },
-
   {
     name: "Dashboard",
     children: [
       {
         name: "Dashboard Home",
-        path: "dashboard",
+        path: "home",
         element: <Dashboard />,
       },
       {
-        name: "All Winter Clothes In Form",
-        path: "dashboard/winter-clothes",
+        name: "WinterClothes",
+        path: "winter-clothes",
         element: <WinterClothesTable />,
+        adminOnly: true,
       },
       {
         name: "Create Winter Clothes",
-        path: "dashboard/create-winter-clothes",
+        path: "create-winter-clothes",
         element: <CreateWinterClothes />,
+        adminOnly: true,
       },
       {
         name: "Create Testimonial",
-        path: "dashboard/create-testimonial",
+        path: "create-testimonial",
         element: <CreateTestimonial />,
       },
     ],
   },
   {
-    name: "Leaderboard",
-    path: "leaderboard",
-    element: <Leaderboard />,
+    name: "My Profile",
+    path: "admin-profile",
+    element: <AdminProfile />,
+    adminOnly: true,
   },
   {
-    name: "Community",
-    path: "community",
-    element: <CommunityGratitudeWall />,
-  },
-  {
-    name: "Volunteer Hub",
-    path: "volunteer",
-    element: <CreateVolunteer />,
-  },
-  {
-    name: "About Us",
-    path: "about-us",
-    element: <AboutUs />,
+    name: "My Profile",
+    path: "user-profile",
+    element: <UserProfile />,
   },
 ];

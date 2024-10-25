@@ -1,22 +1,29 @@
+import Container from "@/components/layouts/Shared/Container";
+import { ThemeContext } from "@/components/ThemeContext/ThemeProvider";
 import { useAddTestimonialMutation } from "@/redux/features/testimonial/testimonialApi";
-import { Button, Divider, Form, Input, message } from "antd";
-
+import { Button, Form, Input, message, Typography } from "antd";
+import { useContext } from "react";
+const { Title } = Typography;
 const CreateTestimonial = () => {
+  const { theme } = useContext(ThemeContext);
   const [form] = Form.useForm();
   const [addTestimonial] = useAddTestimonialMutation();
   const handleSubmit = async (data: FormData) => {
-    console.log("Form submitted");
     const res = await addTestimonial(data).unwrap();
     console.log(res);
     message.success(res.message);
     form.resetFields();
   };
   return (
-    <div className="max-w-7xl ">
-      <h2 className="font-bold text-5xl my-8 text-center text-blue-500">
-        Create Testimonial
-      </h2>
-      <Divider className="border-b-2 border-blue-400"></Divider>
+    <Container className="my-8 ">
+      <Typography>
+        <Title
+          level={3}
+          className="font-semibold md:font-bold  mb-4 text-center "
+        >
+          <span className="text-[#ff4c4e]">Create </span>Testimonial
+        </Title>
+      </Typography>
       <Form
         form={form}
         className="w-2/3 mx-auto"
@@ -26,7 +33,7 @@ const CreateTestimonial = () => {
         <Form.Item
           name="name"
           label="Name"
-          rules={[{ required: true, message: "Please input your name!" }]}
+          rules={[{ required: true, message: "Please provide your name!" }]}
         >
           <Input type="text" />
         </Form.Item>
@@ -34,18 +41,26 @@ const CreateTestimonial = () => {
           label="Testimonial"
           name="testimonial"
           rules={[
-            { required: true, message: "Please input your testimonial!" },
+            { required: true, message: "Please provide your testimonial!" },
           ]}
         >
           <Input.TextArea />
         </Form.Item>
         <Form.Item>
-          <Button className="bg-blue-400" htmlType="submit">
+          <Button
+            style={{
+              backgroundColor: theme === "light" ? "#333" : "#ff4c4e",
+              color: theme === "light" ? "#fff" : "#fff",
+            }}
+            color="default"
+            variant="solid"
+            htmlType="submit"
+          >
             Submit
           </Button>
         </Form.Item>
       </Form>
-    </div>
+    </Container>
   );
 };
 

@@ -57,7 +57,6 @@ const Navbar: React.FC = () => {
         top: 0,
         zIndex: 100,
         width: "100%",
-
         color: theme === "light" ? token.colorText : token.colorText,
         backgroundColor:
           theme === "light" ? token.colorBgSolid : token.colorBgSolid,
@@ -82,7 +81,6 @@ const Navbar: React.FC = () => {
           <Menu
             mode="horizontal"
             theme="light"
-            // defaultSelectedKeys={["1"]}
             items={NavbarItemsGenerator(unAuthUserPaths)}
             style={{
               flex: 3,
@@ -141,6 +139,7 @@ const Navbar: React.FC = () => {
         </div>
         {/* mobile view */}
         {/* ============================================== */}
+        {/* menu button */}
         <div className="lg:hidden text-[#ff4c4e]">
           {mobileMenuOpen ? (
             <CloseOutlined
@@ -178,22 +177,23 @@ const Navbar: React.FC = () => {
               // defaultSelectedKeys={["1"]}
               items={NavbarItemsGenerator(unAuthUserPaths)}
               style={{
-                color: "#3c3d37",
                 fontWeight: "bold",
                 textDecoration: "none",
                 textAlign: "center",
                 padding: "0",
+                color: theme === "light" ? token.colorText : token.colorText,
                 backgroundColor:
-                  theme === "light" ? token.colorBgBase : token.colorBgBase,
+                  theme === "light" ? token.colorBgSolid : token.colorBgSolid,
                 // minWidth: 0,
               }}
               onClick={() => setMobileMenuOpen(false)}
             />
             <div
-              className="flex flex-col items-center gap-4   text-[#3c3d37] pb-2"
+              className="flex flex-col items-center gap-4  pb-2"
               style={{
+                color: theme === "light" ? token.colorText : token.colorText,
                 backgroundColor:
-                  theme === "light" ? token.colorBgBase : token.colorBgBase,
+                  theme === "light" ? token.colorBgSolid : token.colorBgSolid,
               }}
             >
               {!isAuthenticated ? (

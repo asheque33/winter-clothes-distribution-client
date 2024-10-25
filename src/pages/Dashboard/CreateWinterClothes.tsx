@@ -1,8 +1,13 @@
 import RadioInForm from "@/components/form/RadioInForm";
+import Container from "@/components/layouts/Shared/Container";
+import { ThemeContext } from "@/components/ThemeContext/ThemeProvider";
 import { useCreateWinterClothMutation } from "@/redux/features/winterClothes/winterClothesApi";
-import { Button, Divider, Form, Input, message } from "antd";
+import { Button, Form, Input, message, Typography } from "antd";
+import { useContext } from "react";
+const { Title } = Typography;
 
 const CreateWinterClothes = () => {
+  const { theme } = useContext(ThemeContext);
   const [form] = Form.useForm();
   const [createWinterCloth, { isLoading }] = useCreateWinterClothMutation();
   const handleSubmit = async (data: FormData) => {
@@ -14,11 +19,14 @@ const CreateWinterClothes = () => {
     message.success(res.message);
   };
   return (
-    <div className="max-w-7xl ">
-      <h2 className="font-bold text-5xl my-8 text-center text-blue-500">
-        Create Winter Clothes Post
-      </h2>
-      <Divider className="border-b-2 border-blue-400"></Divider>
+    <Container className="my-8 ">
+      <Typography>
+        <Title level={3} className="  mb-4 text-center ">
+          <span className="text-[#ff4c4e]">Create </span>To{" "}
+          <span className="text-[#ff4c4e]">Donate</span>
+        </Title>
+      </Typography>
+
       <Form
         form={form}
         className="w-2/3 mx-auto"
@@ -26,28 +34,56 @@ const CreateWinterClothes = () => {
         onFinish={handleSubmit}
         initialValues={{ size: "S" }}
       >
-        <Form.Item name="image" label="Image">
+        <Form.Item
+          name="image"
+          label="Image"
+          rules={[{ required: true, message: "Please provide product image!" }]}
+        >
           <Input type="text" />
         </Form.Item>
-        <Form.Item name="title" label="Title">
+        <Form.Item
+          name="title"
+          label="Title"
+          rules={[{ required: true, message: "Please provide product title!" }]}
+        >
           <Input type="text" />
         </Form.Item>
-        <Form.Item label="Category" name="category">
+        <Form.Item
+          label="Category"
+          name="category"
+          rules={[
+            { required: true, message: "Please provide product category!" },
+          ]}
+        >
           <Input type="text" />
         </Form.Item>
         <Form.Item label="Size" name="size">
           <RadioInForm />
         </Form.Item>
-        <Form.Item label="Description" name="description">
+        <Form.Item
+          label="Description"
+          name="description"
+          rules={[
+            { required: true, message: "Please provide product details!" },
+          ]}
+        >
           <Input.TextArea />
         </Form.Item>
         <Form.Item>
-          <Button className="bg-blue-400" htmlType="submit">
+          <Button
+            style={{
+              backgroundColor: theme === "light" ? "#333" : "#ff4c4e",
+              color: theme === "light" ? "#fff" : "#fff",
+            }}
+            color="default"
+            variant="solid"
+            htmlType="submit"
+          >
             Submit
           </Button>
         </Form.Item>
       </Form>
-    </div>
+    </Container>
   );
 };
 
