@@ -30,6 +30,34 @@ const text2 = (
 );
 const text3 = (
   <p className="px-8">
+    You can donate by dropping off winter clothes at our designated locations or
+    arranging for a pickup if available. Alternatively, monetary donations can
+    be made directly on our website to help purchase essential items.
+  </p>
+);
+const text4 = (
+  <p className="px-8">
+    Care is made up of large and small nonprofits from 64 districts. When
+    disasters and crises strike, we are committed to connecting donors to vetted
+    We value transparency and will update you on the impact of your
+    contributions through our newsletter and social media. Stories and reports
+    will show how your donations make a difference in the community.
+  </p>
+);
+const text5 = (
+  <p className="px-8">
+    Absolutely! We welcome volunteers of all kinds, including groups of friends,
+    families, and even corporate or community groups. Volunteering as a team can
+    be a fun and rewarding way to give back to the community. We offer flexible
+    opportunities to accommodate groups and ensure you have a meaningful
+    experience together, whether it's sorting and packing donated winter clothes
+    or distributing them at our events. Please reach out to us in advance so we
+    can make the necessary arrangements and discuss how your group can make the
+    biggest impact.
+  </p>
+);
+const text6 = (
+  <p className="px-8">
     Care is made up of large and small nonprofits from 64 districts. When
     disasters and crises strike, we are committed to connecting donors to vetted
     organizations responding to needs in the impacted communities from the
@@ -78,11 +106,50 @@ const items: (panelStyle: CSSProperties) => CollapseProps["items"] = (
       <Title level={2}>
         <span className="text-[#ff4c4e] tracking-tight">
           {" "}
-          What makes Care different from other nonprofits?
+          How can I make Donations?
         </span>
       </Title>
     ),
     children: text3,
+    style: { ...panelStyle },
+  },
+  {
+    key: "4",
+    label: (
+      <Title level={2}>
+        <span className="text-[#ff4c4e] tracking-tight">
+          {" "}
+          Can I track how my donation is used?
+        </span>
+      </Title>
+    ),
+    children: text4,
+    style: { ...panelStyle },
+  },
+  {
+    key: "5",
+    label: (
+      <Title level={2}>
+        <span className="text-[#ff4c4e] tracking-tight">
+          {" "}
+          Can I volunteer with my friends/family/group?
+        </span>
+      </Title>
+    ),
+    children: text5,
+    style: { ...panelStyle },
+  },
+  {
+    key: "6",
+    label: (
+      <Title level={2}>
+        <span className="text-[#ff4c4e] tracking-tight">
+          {" "}
+          What makes Care different from other nonprofits?
+        </span>
+      </Title>
+    ),
+    children: text6,
     style: { ...panelStyle },
   },
 ];
