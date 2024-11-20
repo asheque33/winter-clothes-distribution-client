@@ -1,8 +1,10 @@
 import { logOut, selectedUser } from "@/redux/features/auth/authSlice";
+import logoLightIcon from "@/assets/care-logo-light.png";
+import logoDarkIcon from "@/assets/care-logo-dark.png";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { unAuthUserPaths } from "@/routes/navbar.route";
 
-import { Button, Drawer, Layout, Menu, theme } from "antd";
+import { Button, Drawer, Image, Layout, Menu, theme } from "antd";
 import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import Container from "./Container";
@@ -65,11 +67,18 @@ const Navbar: React.FC = () => {
       <Container className="flex items-center justify-between lg:px-4">
         <div id="logo" style={{ flex: 1 }}>
           <Link
-            className={`font-semibold  hover:opacity-75 text-lg md:text-2xl `}
+            className={`font-semibold  hover:opacity-90 text-lg md:text-2xl flex items-center gap-0.5`}
             style={{ color: token?.colorPrimary }}
             to="/"
           >
-            Care
+            <Image
+              src={theme === "dark" ? logoDarkIcon : logoLightIcon}
+              alt="logo Icon"
+              width={30}
+              height={30}
+              preview={false}
+            />
+            <span>Care</span>
           </Link>
         </div>
         {/* desktop view */}

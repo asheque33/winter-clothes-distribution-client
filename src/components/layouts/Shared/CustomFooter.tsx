@@ -34,6 +34,7 @@ const CustomFooter = () => {
                     alt="logo Icon"
                     width={40}
                     height={40}
+                    preview={false}
                   />
                 </div>
                 <Typography className="flex flex-col text-start">

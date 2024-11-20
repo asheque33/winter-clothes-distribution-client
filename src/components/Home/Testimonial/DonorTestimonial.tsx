@@ -84,7 +84,8 @@ const DonorTestimonial = () => {
             <SwiperSlide key={index}>
               <Card
                 style={{
-                  backgroundColor: theme === "light" ? "#fed7d6" : "#313131",
+                  // backgroundColor: theme === "light" ? "#fed7d6" : "#313131",
+                  backgroundColor: theme === "light" ? "#d9d9d9" : "#313131",
                 }}
                 className=" z-10"
               >
@@ -99,28 +100,36 @@ const DonorTestimonial = () => {
                       {item.name}
                     </Title>
                     <Text style={{ marginTop: "0px" }} className="text-sm">
-                      {item.occupation}
+                      <p>{item.occupation}</p>
                     </Text>
                   </Typography>
                   <Image
                     src={item.image}
-                    height={80}
                     width={80}
+                    height={80}
                     alt="image"
-                    className="object-cover bg-[#ff4c4e] rounded-full w-full h-full  bg-opacity-50  border-spacing-0.5  "
+                    style={{ objectFit: "cover" }}
+                    className="rounded-full "
+                    preview={false}
+                    // className="w-full bg-center  bg-cover bg-opacity-60 rounded-full    border-spacing-0.5  "
                   />
                 </div>
                 <div>
                   <Rate
-                    style={{ color: "#F86D45", margin: "8px 0" }}
+                    style={{
+                      color: theme === "light" ? "#56371A" : "#F86D45",
+                      margin: "8px 0",
+                    }}
                     disabled
                     value={item.ratings}
                   />
                 </div>
 
                 <Text className="text-lg font-medium">
-                  {item.testimonial} I can't thank you enough for your
-                  generosity and support.
+                  <p>
+                    {item.testimonial} I can't thank you enough for your
+                    generosity and support.
+                  </p>
                 </Text>
               </Card>
             </SwiperSlide>
