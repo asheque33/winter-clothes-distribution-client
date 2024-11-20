@@ -22,7 +22,7 @@ const RelatedProductCard = ({
             color="danger"
             href={`/winter-clothes/${item._id}`}
           >
-            View Details
+            <span className="px-4">View Details</span>
           </Button>
           {/* <Text type="secondary">Donate Now</Text> */}
         </Typography>

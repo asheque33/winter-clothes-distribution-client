@@ -30,8 +30,8 @@ const DonorTestimonial = () => {
   );
 
   return (
-    <section className="w-full h-full py-6 shadow-md shadow-slate-200">
-      <Typography className="text-center">
+    <section className="w-full h-full my-16 shadow-md shadow-slate-200">
+      <Typography className="text-center mb-10">
         <Title style={{ marginBottom: "0" }} level={2}>
           <span className="text-[#FF4C4E]">Top</span> Donors
         </Title>

@@ -17,8 +17,8 @@ const WinterClothesPost = () => {
   }
   const displayClothes = clothes?.data.slice(0, 6);
   return (
-    <div className="py-4">
-      <Typography className="text-center">
+    <div className="my-16">
+      <Typography className="text-center mb-10">
         <Title style={{ marginBottom: "0" }} level={2}>
           <span className="text-[#FF4C4E]">Support</span> Our Cause
         </Title>

@@ -59,6 +59,7 @@ const AboutUs = () => {
                 alt="image2"
                 src={aboutUsImg2}
                 className="w-full h-full  rounded-md object-cover"
+                preview={false}
               />
             </div>
           </div>

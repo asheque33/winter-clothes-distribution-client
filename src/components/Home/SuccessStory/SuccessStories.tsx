@@ -24,8 +24,8 @@ const SuccessStories = () => {
     }
   }, [controls, inView]);
   return (
-    <div className="h-full  my-8 " ref={ref}>
-      <Typography className="text-center">
+    <div className="h-full  my-16 " ref={ref}>
+      <Typography className="text-center mb-10">
         <Title style={{ marginBottom: "0" }} level={2}>
           <span className="text-[#FF4C4E]">Success</span> Stories
         </Title>

@@ -80,7 +80,7 @@ const items: (panelStyle: CSSProperties) => CollapseProps["items"] = (
     key: "1",
     label: (
       <Title level={2}>
-        <span className="text-[#ff4c4e] tracking-tight">
+        <span className=" tracking-tight">
           Why do we increase our emergency aid measures in winter?
         </span>
       </Title>
@@ -92,7 +92,7 @@ const items: (panelStyle: CSSProperties) => CollapseProps["items"] = (
     key: "2",
     label: (
       <Title level={2}>
-        <span className="text-[#ff4c4e] tracking-tight">
+        <span className=" tracking-tight">
           Can I donate warm clothes or food for refugees?
         </span>
       </Title>
@@ -104,10 +104,7 @@ const items: (panelStyle: CSSProperties) => CollapseProps["items"] = (
     key: "3",
     label: (
       <Title level={2}>
-        <span className="text-[#ff4c4e] tracking-tight">
-          {" "}
-          How can I make Donations?
-        </span>
+        <span className=" tracking-tight"> How can I make Donations?</span>
       </Title>
     ),
     children: text3,
@@ -117,7 +114,7 @@ const items: (panelStyle: CSSProperties) => CollapseProps["items"] = (
     key: "4",
     label: (
       <Title level={2}>
-        <span className="text-[#ff4c4e] tracking-tight">
+        <span className=" tracking-tight">
           {" "}
           Can I track how my donation is used?
         </span>
@@ -130,7 +127,7 @@ const items: (panelStyle: CSSProperties) => CollapseProps["items"] = (
     key: "5",
     label: (
       <Title level={2}>
-        <span className="text-[#ff4c4e] tracking-tight">
+        <span className=" tracking-tight">
           {" "}
           Can I volunteer with my friends/family/group?
         </span>
@@ -143,7 +140,7 @@ const items: (panelStyle: CSSProperties) => CollapseProps["items"] = (
     key: "6",
     label: (
       <Title level={2}>
-        <span className="text-[#ff4c4e] tracking-tight">
+        <span className=" tracking-tight">
           {" "}
           What makes Care different from other nonprofits?
         </span>
@@ -168,7 +165,7 @@ const FAQComponent = () => {
     <div className="h-full my-8 w-full ">
       <Typography className="text-center">
         <Title style={{ marginBottom: "0" }} level={2}>
-          <span className="text-[#FF4C4E]">Winter Cause</span> FAQ
+          <span className="text-[#ff4c4e]">Winter Cause</span> FAQ
         </Title>
         <Paragraph style={{ marginTop: "0" }}>
           <Text italic className="text-lg text-slate-400">

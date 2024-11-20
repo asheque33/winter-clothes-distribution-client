@@ -3,8 +3,8 @@ const { Title, Text, Paragraph } = Typography;
 
 const WinterClothesGallery = () => {
   return (
-    <div className="h-full py-8 ">
-      <Typography className="text-center">
+    <div className="h-full my-16 ">
+      <Typography className="text-center mb-10">
         <Title style={{ marginBottom: "0" }} level={2}>
           <span className="text-[#FF4C4E]">Hands</span> To Hearts
         </Title>
